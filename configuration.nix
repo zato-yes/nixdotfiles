@@ -11,6 +11,41 @@ boot.loader = {
   efi.canTouchEfiVariables = true;
 };
 
+boot.loader.grub.extraEntries = ''
+  submenu 'Brunch' {
+    menuentry 'Brunch' --class 'brunch' {
+      rmmod tpm
+      unset theme
+      img_path="/Brunch.img"
+      img_uuid="2abc6672-4688-409a-be9f-c3837506a5f9"
+      search --no-floppy --set=root --file ''${img_path}
+      loopback loop ''${img_path}
+      source (loop,12)/efi/boot/settings.cfg
+      if [ -z ''${verbose} ] -o [ ''${verbose} -eq 0 ]; then
+        linux (loop,7)''${kernel} boot=local noresume noswap loglevel=7 options=''${options} \
+          cros_secure cros_debug img_uuid=''${img_uuid} img_path=''${img_path} \
+          console= vt.global_cursor_default=0 brunch_bootsplash=''${brunch_bootsplash} quiet
+      else
+        linux (loop,7)''${kernel} boot=local noresume noswap loglevel=7 options=''${options} \
+          cros_secure cros_debug img_uuid=''${img_uuid} img_path=''${img_path}
+      fi
+      initrd (loop,7)/lib/firmware/amd-ucode.img (loop,7)/lib/firmware/intel-ucode.img (loop,7)/initramfs.img
+    }
+    menuentry 'Brunch settings' --class 'brunch-settings' {
+      rmmod tpm
+      unset theme
+      img_path="/Brunch.img"
+      img_uuid="2abc6672-4688-409a-be9f-c3837506a5f9"
+      search --no-floppy --set=root --file ''${img_path}
+      loopback loop ''${img_path}
+      source (loop,12)/efi/boot/settings.cfg
+      linux (loop,7)/kernel boot=local noresume noswap loglevel=7 options= chromeos_bootsplash= \
+        edit_brunch_config=1 cros_secure cros_debug img_uuid=''${img_uuid} img_path=''${img_path}
+      initrd (loop,7)/lib/firmware/amd-ucode.img (loop,7)/lib/firmware/intel-ucode.img (loop,7)/initramfs.img
+    }
+  }
+'';
+
 boot.loader.systemd-boot.enable = false;
 boot.loader.efi.efiSysMountPoint = "/boot/efi";
 boot.loader.grub.useOSProber = true;
@@ -80,10 +115,15 @@ environment.systemPackages = with pkgs; [
     macchanger 
     waybar 
     git 
+    thunar
     lm_sensors 
     bibata-cursors
+	pkgs.vimPlugins.cmp-nvim-lsp
+    pkgs.vimPlugins.nvim-cmp
     #librewolf
     pkgsUnstable.firefox
+    nixd
+    lua-language-server
 
 ];
 

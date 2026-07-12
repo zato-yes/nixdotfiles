@@ -11,7 +11,20 @@
 	};
     };
     
+home.file.".config/mango".source = ./config/mango;
+
+home.file.".config/nvim" = {
+  source = ./config/nvim;
+  recursive = true;
+};
+#xdg.configFile."
+
+
+
+
+
 
 
 
 }
+
