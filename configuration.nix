@@ -96,16 +96,11 @@ environment.systemPackages = with pkgs; [
     vim
     neovim
     wget 
-    alacritty 
-    fastfetch 
-    neovim 
     htop 
     grim 
     slurp 
     rofi 
     scrcpy 
-    lzip 
-    obs-studio 
     wl-clipboard 
     pavucontrol 
     brightnessctl 
@@ -113,18 +108,15 @@ environment.systemPackages = with pkgs; [
     foot
     mangowc 
     macchanger 
-    waybar 
     git 
     thunar
     lm_sensors 
     bibata-cursors
 	pkgs.vimPlugins.cmp-nvim-lsp
     pkgs.vimPlugins.nvim-cmp
-    #librewolf
     pkgsUnstable.firefox
     nixd
     lua-language-server
-
 ];
 
 services.flatpak.enable = true;
@@ -167,15 +159,10 @@ wantedBy = [ "multi-user.target" ];
 serviceConfig = {
 Type = "oneshot";
 ExecStart = "${pkgs.bash}/bin/sh -c 'echo 60 > /sys/class/power_supply/BAT0/charge_control_end_threshold'";
-RemainAfterExit = true;
+RemainAfterExit = false;
 };
 };
 
-boot.extraModulePackages = with config.boot.kernelPackages; [ v4l2loopback ];
-boot.kernelModules = [ "v4l2loopback" ];
-boot.extraModprobeConfig = ''
-options v4l2loopback devices=1 video_nr=10 card_label="OBS Virtual Camera" exclusive_caps=1
-'';
 
 system.stateVersion = "25.11";
 }

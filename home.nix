@@ -1,23 +1,44 @@
 { config, pkgs, ... }:
 
+let
+	dotfiles = "${config.home.homeDirectory}/nixdotfiles/config";
+	createSymlink = path: config.lib.file.mkOutOfStoreSymlink path;
+	configs = {
+		mango = "mango";
+		nvim = "nvim";
+	};
+in
+
 {
-    home.username = "dummy";
+
+
+  imports = [
+    ./bash.nix
+  ];
+
+	home.username = "dummy";
     home.homeDirectory = "/home/dummy";
     home.stateVersion = "26.05";
-    programs.bash = {
-	enable = true;
-	shellAliases = {
-	    yes = "echo he said yes";
+    	programs.bash = {
+			enable = true;
+			shellAliases = {
+	    	yes = "echo he said yes";
+		};
 	};
-    };
-    
-home.file.".config/mango".source = ./config/mango;
 
-home.file.".config/nvim" = {
-  source = ./config/nvim;
-  recursive = true;
-};
-#xdg.configFile."
+
+xdg.configFile = builtins.mapAttrs
+	(name: subpath: {
+		source = createSymlink "${dotfiles}/${subpath}";
+		recursive = true;
+	})
+	configs;
+
+
+
+
+
+
 
 
 

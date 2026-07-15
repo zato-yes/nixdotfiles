@@ -91,20 +91,27 @@ vim.api.nvim_create_autocmd('LspAttach', {
 local caps = require("cmp_nvim_lsp").default_capabilities()
 
 -- Nix
+local capabilities = require('cmp_nvim_lsp').default_capabilities()
 vim.lsp.config['nixd'] = {
 	cmd = { 'nixd' },
-	filetypes = { 'nix' },
-	root_markers = { 'flake.nix', 'default.nix', '.git' },
-	capabilities = caps,
-	-- nixd settings are highly setup-dependent (nixos/home-manager options
-	-- eval, formatter, etc). Left empty here — add as needed, e.g.:
-	-- settings = {
-	--     nixd = {
-	--         formatting = { command = { "alejandra" } },
-	--     },
-	-- },
+	capabilities = capabilities,
+	settings = {
+		nixd = {
+			nixpkgs = {
+				expr = "import <nixpkgs> { }",
+			},
+			options = {
+				nixos = {
+					expr = '(builtins.getFlake "/home/dummy/nixdotfiles").nixosConfigurations.sweetNix.options',
+				},
+				home_manager = {
+					expr =
+					'(builtins.getFlake "/home/dummy/nixdotfiles").nixosConfigurations.sweetNix.options.home-manager.users.type.getSubOptions ["home-manager" "users" "dummy"]',
+				},
+			},
+		},
+	},
 }
-
 -- Lua
 vim.lsp.config['luals'] = {
 	cmd = { 'lua-language-server' },
