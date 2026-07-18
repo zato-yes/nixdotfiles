@@ -5,7 +5,11 @@
 
 programs.bash = {
 	enable = true;
-	shellAliases = { "wow!!" = "echo amazing words"; ll = "ls -l"; };
+	shellAliases = { 
+		nrs = "sudo nixos-rebuild switch --flake ~/nixdotfiles#sweetNix";
+
+
+	};
 };
 
 
