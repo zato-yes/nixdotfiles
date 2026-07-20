@@ -75,7 +75,6 @@ users.users.dummy = {
 
 # hyprland+displaymanager
 security.polkit.enable = true;
-programs.mangowc.enable = true;
 
 services.displayManager.sddm = {
     enable = true;
@@ -114,7 +113,6 @@ environment.systemPackages = with pkgs; [
     bibata-cursors
 	pkgs.vimPlugins.cmp-nvim-lsp
     pkgs.vimPlugins.nvim-cmp
-    pkgsUnstable.firefox
     nixd
     lua-language-server
 ];
