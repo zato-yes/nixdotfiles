@@ -2,6 +2,7 @@
 
 {
 imports = [ ./hardware-configuration.nix ];
+
 boot.loader = {
   grub = {
     enable = true;
@@ -105,7 +106,6 @@ environment.systemPackages = with pkgs; [
     brightnessctl 
     wev
     foot
-    mangowc 
     macchanger 
     git 
     thunar

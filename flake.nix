@@ -19,7 +19,7 @@
 
 	
 	};
-    outputs = { self, nixpkgs, home-manager, nixpkgsUnstable, ...}:
+    outputs = { self, nixpkgs, home-manager, nixpkgsUnstable, mangowm, ...}@inputs:
     let
 	system = "x86_64-linux";
        pkgsUnstable = import nixpkgsUnstable { inherit system; config.allowUnfree = true; };
@@ -28,10 +28,11 @@
     {
 	nixosConfigurations.sweetNix = nixpkgs.lib.nixosSystem {
 	    inherit system;
-	    specialArgs = { inherit pkgsUnstable;};
+	    specialArgs = { inherit pkgsUnstable mangowm;};
 	    modules = [
 		./configuration.nix
 		home-manager.nixosModules.home-manager
+		mangowm.nixosModules.mango
 		{
 		    home-manager = {
 			useGlobalPkgs = true;

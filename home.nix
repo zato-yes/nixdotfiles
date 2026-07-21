@@ -13,9 +13,8 @@ in
 
 
   imports = [
-    ./nixModules/bash.nix
-	 ./nixModules/firefox.nix
-
+  	./hmModules/bash.nix
+  	./hmModules/firefox.nix
   ];
 
 	home.username = "dummy";
