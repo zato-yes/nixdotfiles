@@ -31,6 +31,7 @@
 	    specialArgs = { inherit pkgsUnstable mangowm;};
 	    modules = [
 		./configuration.nix
+		./nixModules/mango.nix
 		home-manager.nixosModules.home-manager
 		mangowm.nixosModules.mango
 		{

@@ -74,7 +74,6 @@ users.users.dummy = {
 };
 
 
-# hyprland+displaymanager
 security.polkit.enable = true;
 
 services.displayManager.sddm = {
@@ -136,7 +135,7 @@ wantedBy = [ "multi-user.target" ];
 path = [ pkgs.iproute2 pkgs.macchanger ];
 serviceConfig = {
 Type = "oneshot";
-ExecStartPre = "${pkgs.coreutils}/bin/sleep 3";
+ExecStartPre = "${pkgs.coreutils}/bin/sleep 0";
 ExecStart = pkgs.writeShellScript "macchanger-script" ''
 ip link set enp0s20f0u1 down
 macchanger -r enp0s20f0u1

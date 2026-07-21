@@ -1,4 +1,4 @@
-{ config, pkgs, pkgsUnstable, ... }:
+{ config, pkgs, ... }:
 {
 
 programs.mango.enable = true;
