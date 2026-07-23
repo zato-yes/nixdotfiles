@@ -113,6 +113,7 @@ environment.systemPackages = with pkgs; [
 	pkgs.vimPlugins.cmp-nvim-lsp
     pkgs.vimPlugins.nvim-cmp
     nixd
+	quickshell
     lua-language-server
 ];
 
