@@ -114,6 +114,7 @@ environment.systemPackages = with pkgs; [
     pkgs.vimPlugins.nvim-cmp
     nixd
 	quickshell
+	swaybg
     lua-language-server
 ];
 

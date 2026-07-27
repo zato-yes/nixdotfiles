@@ -6,7 +6,7 @@ let
 	configs = {
 		mango = "mango";
 		nvim = "nvim";
-		"quickshell/mangobar" = "quickshell/mangobar";
+		quickshell = "quickshell";
 	};
 in
 

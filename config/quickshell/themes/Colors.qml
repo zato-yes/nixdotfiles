@@ -1,7 +1,11 @@
+pragma Singleton
+import Quickshell
 import QtQuick
-QtObject {
+Singleton {
     readonly property color background: "#2d333f"
-    readonly property color foreground: "#c6c6c8"
+	readonly property color foreground: "#c6c6c8"
+
+	readonly property color backgroundBar: "#1b1e25"
 	readonly property color cursor: "#c6c6c8"
 
     readonly property color darkRed: "#967786"
