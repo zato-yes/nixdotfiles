@@ -81,11 +81,13 @@ services.displayManager.sddm = {
     wayland.enable = true;
 };
 
-
+services.upower.enable = true;
 
 #####
 
+
 fonts.packages = with pkgs; [
+  nerd-fonts.jetbrains-mono
 (iosevka-bin.override { variant = "SGr-IosevkaFixed"; })
 ];
 
@@ -108,13 +110,13 @@ environment.systemPackages = with pkgs; [
     macchanger 
     git 
     thunar
+	jetbrains-mono
     lm_sensors 
     bibata-cursors
 	pkgs.vimPlugins.cmp-nvim-lsp
     pkgs.vimPlugins.nvim-cmp
     nixd
 	quickshell
-	swaybg
     lua-language-server
 ];
 
