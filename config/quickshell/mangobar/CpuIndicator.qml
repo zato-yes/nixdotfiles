@@ -51,7 +51,6 @@ Item {
             onRead: data => {
                 if (!data.startsWith("cpu ")) return;
                 const parts = data.trim().split(/\s+/).slice(1).map(Number);
-                // Fields: user nice system idle iowait irq softirq steal guest guest_nice
                 const idle = (parts[3] || 0) + (parts[4] || 0); // idle + iowait
                 const total = parts.reduce((a, b) => a + b, 0);
                 if (root._hasPrevSample) {

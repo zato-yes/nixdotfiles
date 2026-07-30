@@ -12,11 +12,20 @@ PanelWindow {
         top: true
         left: true
         right: true
-    }
+	}
 	implicitHeight: 33 + margins * 3
 	property int margins: 6
     exclusiveZone: implicitHeight
 	color: "Transparent"
+
+	component Divider: Rectangle {
+    width: 1
+	height: 14
+	opacity: 0.7
+    color: Colors.mediumBlue
+	}
+
+
 
 	Rectangle {
     radius: 5
@@ -71,20 +80,22 @@ PanelWindow {
 				Battery {
 		    	    textColor: Colors.pastelBlue
 					fontSize: 13
-		        }		
+				}		
+				Divider {}
 				VolumeIndicator {
 					spacing: 5
 					fontSize: 13
 					textColor: Colors.pastelBlue
 				}
-				
+
+				Divider {}	
 
 				CpuIndicator {
 					spacing: 5
 					fontSize: 13
 					textColor: Colors.pastelBlue
 				}
-					
+				Divider {}	
 				MemoryIndicator {
 					spacing: 5
 					fontSize: 13
