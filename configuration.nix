@@ -101,6 +101,7 @@ environment.systemPackages = with pkgs; [
     grim 
     slurp 
     rofi 
+	python3
     scrcpy 
     wl-clipboard 
     pavucontrol 
