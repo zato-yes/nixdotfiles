@@ -99,7 +99,7 @@ ShellRoot {
 		WlrLayershell.namespace: "quickshell:applauncher"
 		Rectangle {
 			color: Qt.rgba(0.12, 0.12, 0.16, 0.6)
-				
+			clip: true	
             anchors.fill: parent
             radius: 10
          	//color: Colors.backgroundBar

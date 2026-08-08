@@ -11,7 +11,6 @@ Item {
 
     implicitHeight: 40
     implicitWidth: ListView.view ? ListView.view.width : 400
-	opacity: 0.5
 	Rectangle {
         anchors.fill: parent
         anchors.margins: 0
