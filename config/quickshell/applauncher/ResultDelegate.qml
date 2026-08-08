@@ -1,5 +1,5 @@
 import QtQuick
-
+import "../themes"
 Item {
     id: root
 
@@ -9,28 +9,29 @@ Item {
     required property bool isSelected
     signal activated()
 
-    implicitHeight: 44
+    implicitHeight: 40
     implicitWidth: ListView.view ? ListView.view.width : 400
-
-    Rectangle {
+	opacity: 0.5
+	Rectangle {
         anchors.fill: parent
-        anchors.margins: 4
-        radius: 6
-        color: root.isSelected ? "#3a3a3a" : "transparent"
-
+        anchors.margins: 0
+        radius: 4
+        color: "transparent"
+		border.color: root.isSelected ? Colors.pinkRed : "transparent"
+		border.width: 1
         Column {
             anchors.left: parent.left
             anchors.right: parent.right
             anchors.verticalCenter: parent.verticalCenter
-            anchors.leftMargin: 12
-            anchors.rightMargin: 12
-            spacing: 2
+            anchors.leftMargin: 5
+            anchors.rightMargin: 5
+            spacing: 1
 
             Text {
                 width: parent.width
                 text: root.appName
-                color: "#e8e8e8"
-                font.pixelSize: 15
+                color: Colors.pastelYellow
+                font.pixelSize: 14
                 font.bold: root.isSelected
                 elide: Text.ElideRight
             }
@@ -38,8 +39,9 @@ Item {
             Text {
                 width: parent.width
                 text: root.appComment
-                color: "#999999"
-                font.pixelSize: 12
+				color: Colors.pastelYellow
+				opacity: root.isSelected ? 0.8 : 0.5
+                font.pixelSize: 13
                 elide: Text.ElideRight
                 visible: root.appComment.length > 0
             }

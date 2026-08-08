@@ -1,4 +1,5 @@
 import QtQuick
+import "../themes"
 Item {
     id: root
 
@@ -9,9 +10,9 @@ Item {
 
     Rectangle {
         anchors.fill: parent
-        radius: 6
-        color: "#2a2a2a"
-        border.color: "#444444"
+        radius: 4
+        color: "Transparent"
+        border.color: Colors.pinkRed
         border.width: 1
     }
 
@@ -20,8 +21,8 @@ Item {
         anchors.left: parent.left
         anchors.leftMargin: 14
         anchors.verticalCenter: parent.verticalCenter
-        text: "looking for..."
-        color: "#666666"
+        text: " looking for..."
+        color: Colors.pastelGrey
         font.pixelSize: 15
         visible: input.text.length === 0
     }
@@ -32,8 +33,8 @@ Item {
         anchors.leftMargin: 14
         anchors.rightMargin: 14
         verticalAlignment: TextInput.AlignVCenter
-        color: "#e8e8e8"
-        font.pixelSize: 15
+        color: Colors.pastelYellow
+        font.pixelSize: 14
         clip: true
 
         cursorVisible: activeFocus

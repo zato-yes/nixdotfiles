@@ -1,5 +1,5 @@
 import QtQuick
-
+import "../themes"
 Item {
     id: root
 
@@ -33,17 +33,17 @@ Item {
         anchors.centerIn: parent
         visible: root.appModel.length === 0
         text: "No results"
-        color: "#777777"
+        color: Colors.pastelYellow
         font.pixelSize: 14
     }
 
     Text {
         anchors.right: parent.right
         anchors.bottom: parent.bottom
-        anchors.margins: 6
+        anchors.margins: 10
         visible: root.appModel.length > 0
         text: root.appModel.length + (root.appModel.length === 1 ? " result" : " results")
-        color: "#555555"
+        color: Colors.pastelYellowDark
         font.pixelSize: 10
     }
 }

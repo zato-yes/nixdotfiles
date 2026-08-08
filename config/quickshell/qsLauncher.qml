@@ -90,26 +90,26 @@ ShellRoot {
     PanelWindow {
         id: window
 		//backgroundwindow
-        implicitWidth: 700
+        implicitWidth: 600
         implicitHeight: 500
 
-        color: "transparent"
-
+		color: "transparent"
         WlrLayershell.layer: WlrLayer.Overlay
         WlrLayershell.keyboardFocus: WlrKeyboardFocus.Exclusive
 		WlrLayershell.namespace: "quickshell:applauncher"
-        Rectangle {
+		Rectangle {
+			color: Qt.rgba(0.12, 0.12, 0.16, 0.6)
+				
             anchors.fill: parent
             radius: 10
-            color: Colors.background
-            border.color: "#3a3a3a"
-            border.width: 1
+         	//color: Colors.backgroundBar
+            border.color: Colors.backgroundBar
+            border.width: 3
 
-            Column {
+			Column {
                 anchors.fill: parent
-                anchors.margins: 12
-                spacing: 10
-
+                anchors.margins: 20
+                spacing: 5
                 SearchField {
                     id: searchField
                     width: parent.width
