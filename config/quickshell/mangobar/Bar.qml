@@ -58,11 +58,12 @@ PanelWindow {
 			color: Colors.background
 			radius: 7
     		implicitWidth: clock.implicitWidth + 15
-	   		implicitHeight: clock.implicitHeight + 10  
-			
+	   		implicitHeight: clock.implicitHeight + 10 
+			anchors.centerIn: parent	
 			Clock {
 				id: clock 
 				anchors.centerIn: parent
+
 				textColor: Colors.pastelYellow
 				fontSize: 13
 			}

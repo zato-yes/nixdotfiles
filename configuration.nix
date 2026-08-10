@@ -76,9 +76,11 @@ users.users.dummy = {
 
 security.polkit.enable = true;
 
-services.displayManager.sddm = {
+services.displayManager.ly = {
     enable = true;
-    wayland.enable = true;
+	settings = {
+		setup_cmd = "";
+	};
 };
 
 services.upower.enable = true;
@@ -90,8 +92,6 @@ fonts.packages = with pkgs; [
   nerd-fonts.jetbrains-mono
 (iosevka-bin.override { variant = "SGr-IosevkaFixed"; })
 ];
-
-
 # Apps
 environment.systemPackages = with pkgs; [
     vim
@@ -109,10 +109,13 @@ environment.systemPackages = with pkgs; [
     wev
     foot
     macchanger 
+	swayidle
     git 
-    thunar
+	thunar
+	ly
 	jetbrains-mono
     lm_sensors 
+	input-remapper
     bibata-cursors
 	pkgs.vimPlugins.cmp-nvim-lsp
     pkgs.vimPlugins.nvim-cmp

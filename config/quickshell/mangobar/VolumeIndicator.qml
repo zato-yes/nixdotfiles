@@ -13,8 +13,8 @@ Item {
     property string glyphLow: "󰕿"
     property string glyphMid: "󰖀"
     property string glyphHigh: "󰕾"
-    property int lowMidThreshold: 35
-    property int midHighThreshold: 40
+    property int lowMidThreshold: 20
+    property int midHighThreshold: 30
 
     readonly property var sink: Pipewire.defaultAudioSink
     readonly property int volume: sink?.audio ? Math.round(sink.audio.volume * 100) : 0
@@ -29,7 +29,6 @@ Item {
     implicitWidth: row.implicitWidth
     implicitHeight: row.implicitHeight
 
-    // Required so Pipewire actually tracks this node's properties
     PwObjectTracker {
         objects: [Pipewire.defaultAudioSink]
     }
