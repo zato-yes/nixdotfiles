@@ -16,6 +16,7 @@ in
   imports = [
   	./hmModules/bash.nix
   	./hmModules/firefox.nix
+  	./hmModules/papirusicons.nix
   ];
 
 	home.username = "dummy";

@@ -84,7 +84,7 @@ services.displayManager.ly = {
 };
 
 services.upower.enable = true;
-
+programs.dconf.enable = true;
 #####
 
 
@@ -102,12 +102,13 @@ environment.systemPackages = with pkgs; [
     slurp 
     rofi 
 	python3
-    scrcpy 
+	scrcpy 
     wl-clipboard 
     pavucontrol 
     brightnessctl 
     wev
     foot
+	gsettings-desktop-schemas
     macchanger 
 	swayidle
     git 
@@ -116,6 +117,8 @@ environment.systemPackages = with pkgs; [
 	jetbrains-mono
     lm_sensors 
 	input-remapper
+	dconf
+	glib
     bibata-cursors
 	pkgs.vimPlugins.cmp-nvim-lsp
     pkgs.vimPlugins.nvim-cmp
@@ -152,8 +155,12 @@ ip link set enp0s20f0u1 up
 RemainAfterExit = false;
 };
 };
+
 environment.sessionVariables = {
-WLR_DRM_NO_ATOMIC = "1";
+  WLR_DRM_NO_ATOMIC = "1";
+  XDG_DATA_DIRS = [
+    "${pkgs.gsettings-desktop-schemas}/share/gsettings-schemas/${pkgs.gsettings-desktop-schemas.name}"
+  ];
 };
 
 services.thermald.enable = true;
