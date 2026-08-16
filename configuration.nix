@@ -52,6 +52,10 @@ boot.loader.efi.efiSysMountPoint = "/boot/efi";
 boot.loader.grub.useOSProber = true;
 boot.kernelPackages = pkgs.linuxPackages_latest;
 
+
+hardware.graphics.enable = true;
+hardware.graphics.enable32Bit = true;
+
 nix.settings.experimental-features = [ "nix-command" "flakes"];
 networking.hostName = "sweetNix";
 networking.networkmanager.enable = true;
@@ -104,6 +108,8 @@ environment.systemPackages = with pkgs; [
 	python3
 	scrcpy 
     wl-clipboard 
+	pkgsUnstable.steam
+	heroic
     pavucontrol 
     brightnessctl 
     wev

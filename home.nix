@@ -1,4 +1,4 @@
-{ config, pkgs, ... }:
+{ config, pkgs, inputs, ... }:
 
 let
 	dotfiles = "${config.home.homeDirectory}/nixdotfiles/config";
@@ -17,6 +17,7 @@ in
   	./hmModules/bash.nix
   	./hmModules/firefox.nix
   	./hmModules/papirusicons.nix
+  	./hmModules/textfox.nix
   ];
 
 	home.username = "dummy";
@@ -30,16 +31,6 @@ xdg.configFile = builtins.mapAttrs
 		recursive = true;
 	})
 	configs;
-
-
-
-
-
-
-
-
-
-
 
 
 

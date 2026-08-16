@@ -11,8 +11,7 @@
 			url = "github:mangowm/mango";
 			inputs.nixpkgs.follows = "nixpkgsUnstable";
 		};
-	
-
+		textfox.url = "github:adriankarlen/textfox";
 
 
 
@@ -40,7 +39,7 @@
 			useUserPackages = true;
 			users.dummy = import ./home.nix;
 			backupFileExtension = "backup";
-			extraSpecialArgs = { inherit pkgsUnstable;};
+			extraSpecialArgs = { inherit pkgsUnstable; inherit inputs;};
 		    };
 		}
 	    ];
