@@ -6,6 +6,8 @@ imports = [ ./hardware-configuration.nix ];
 boot.loader = {
   systemd-boot = {
 	enable = lib.mkForce false;
+	consoleMode = "max";
+	configurationLimit = 10;
   };
 	efi.canTouchEfiVariables = true;
 	efi.efiSysMountPoint = "/boot/efi";
