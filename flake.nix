@@ -11,14 +11,21 @@
 			url = "github:mangowm/mango";
 			inputs.nixpkgs.follows = "nixpkgsUnstable";
 		};
-		textfox.url = "github:adriankarlen/textfox";
+
+		textfox = {
+		 	url = "github:adriankarlen/textfox";
+		};
+		
+		lanzaboote = {
+		url = "github:nix-community/lanzaboote/v1.1.0";
+		inputs.nixpkgs.follows = "nixpkgsUnstable";
+
+		};
 
 
 
-
-	
 	};
-    outputs = { self, nixpkgs, home-manager, nixpkgsUnstable, mangowm, ...}@inputs:
+    outputs = { self, nixpkgs, home-manager, nixpkgsUnstable, mangowm, lanzaboote, ...}@inputs:
     let
 	system = "x86_64-linux";
        pkgsUnstable = import nixpkgsUnstable { inherit system; config.allowUnfree = true; };
@@ -33,6 +40,7 @@
 		./nixModules/mango.nix
 		home-manager.nixosModules.home-manager
 		mangowm.nixosModules.mango
+		lanzaboote.nixosModules.lanzaboote
 		{
 		    home-manager = {
 			useGlobalPkgs = true;
