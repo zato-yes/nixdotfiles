@@ -55,7 +55,8 @@ boot.lanzaboote = {
 
 boot.kernelPackages = pkgs.linuxPackages_latest;
 services.fwupd.enable = true;
-
+hardware.cpu.intel.updateMicrocode = true;
+hardware.enableRedistributableFirmware = true;
 hardware.graphics.enable = true;
 hardware.graphics.enable32Bit = true;
 
