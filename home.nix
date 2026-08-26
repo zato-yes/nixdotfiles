@@ -7,6 +7,7 @@ let
 		mango = "mango";
 		nvim = "nvim";
 		quickshell = "quickshell";
+		foot = "foot";
 	};
 in
 
