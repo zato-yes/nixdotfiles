@@ -24,8 +24,8 @@
       displaySidebarTools = false;
       displayTitles = false;
       font = {
-        family = "JetBrains Mono";
-        size = "15px";
+        family = "JetBrainsMono Nerd Font";
+        size = "13px";
         accent = "#c6c6c8"; # focused color
       };
       tabs = {

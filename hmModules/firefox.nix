@@ -2,9 +2,10 @@
 
 
 {
-
 programs.firefox = {
+	
 	enable = true;
+	profiles.default.extraConfig = builtins.readFile ./arkenfoxuser.js;
 	package = pkgsUnstable.firefox;
 	policies = {
 		ExtensionSettings = {

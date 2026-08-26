@@ -9,7 +9,7 @@ boot.loader = {
 	#configurationLimit = 10;
 	device = "nodev";
 	efiSupport = true;
-	useOSProber = true;
+	useOSProber = false;
   };
 	efi.canTouchEfiVariables = true;
 	efi.efiSysMountPoint = "/boot/efi";
