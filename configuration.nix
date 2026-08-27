@@ -16,6 +16,7 @@ boot.loader = {
 
 };
 
+
 #boot.lanzaboote = {
 #	enable = false;
 #	pkiBundle = "/var/lib/sbctl";
@@ -57,7 +58,7 @@ boot.loader.grub.extraEntries = ''
 
 
 boot.kernelPackages = pkgs.linuxPackages_latest;
-services.fwupd.enable = true;
+
 hardware.cpu.intel.updateMicrocode = true;
 hardware.enableRedistributableFirmware = true;
 hardware.graphics.enable = true;
@@ -110,7 +111,6 @@ environment.systemPackages = with pkgs; [
     wget 
     htop 
     grim 
-	fwupd
     slurp 
     rofi 
 	python3
@@ -118,25 +118,22 @@ environment.systemPackages = with pkgs; [
 	scrcpy 
     wl-clipboard 
 	pkgsUnstable.steam
-	heroic
     pavucontrol 
     brightnessctl 
     wev
     foot
 	gsettings-desktop-schemas
     macchanger 
-	swayidle
     git 
 	thunar
 	ly
-	jetbrains-mono
     lm_sensors 
 	input-remapper
 	dconf
 	glib
     bibata-cursors
-	pkgs.vimPlugins.cmp-nvim-lsp
-    pkgs.vimPlugins.nvim-cmp
+	vimPlugins.cmp-nvim-lsp
+    vimPlugins.nvim-cmp
     nixd
 	quickshell
     lua-language-server
@@ -152,6 +149,35 @@ xdg.portal.extraPortals = [ pkgs.xdg-desktop-portal-gtk ];
 
 
 #Services
+
+nix.gc = {
+    automatic = true;
+    dates = "weekly";
+};
+
+
+systemd = {
+    services.remove-nix-gen = {
+        description = "removes every nix generation except for 5 lastest";
+        serviceConfig = {
+            Type = "oneshot";
+            ExecStart = ''
+            ${pkgs.nix}/bin/nix-env -p /nix/var/nix/profiles/system --delete-generations +5
+            '';
+        };
+    };
+    timers.remove-nix-gen = {
+        wantedBy = [ "timers.target" ];
+        timerConfig = {
+            OnCalendar = "weekly";
+            Persistent = true;
+        };
+    };
+};
+
+
+
+
 systemd.services.macchanger = {
 description = "macrandomise";
 after = [ "sys-subsystem-net-devices-enp0s20f0u1.device" ];
