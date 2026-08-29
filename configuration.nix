@@ -27,7 +27,7 @@ boot.loader.grub.extraEntries = ''
       rmmod tpm
       unset theme
       img_path="/Brunch.img"
-      img_uuid="3bdee200-ba3c-43d8-bc04-8540803039db"
+      img_uuid="5f7d8435-d737-4cd2-a6d1-3bb41ef0b652"
       search --no-floppy --set=root --file ''${img_path}
       loopback loop ''${img_path}
       source (loop,12)/efi/boot/settings.cfg
@@ -45,7 +45,7 @@ boot.loader.grub.extraEntries = ''
       rmmod tpm
       unset theme
       img_path="/Brunch.img"
-      img_uuid="3bdee200-ba3c-43d8-bc04-8540803039db"
+      img_uuid="5f7d8435-d737-4cd2-a6d1-3bb41ef0b652"
       search --no-floppy --set=root --file ''${img_path}
       loopback loop ''${img_path}
       source (loop,12)/efi/boot/settings.cfg
@@ -63,6 +63,13 @@ hardware.cpu.intel.updateMicrocode = true;
 hardware.enableRedistributableFirmware = true;
 hardware.graphics.enable = true;
 hardware.graphics.enable32Bit = true;
+
+networking.firewall = {
+  enable = true;
+  allowedTCPPorts = [ ]; 
+  allowedUDPPorts = [ ];
+};
+
 
 nix.settings.experimental-features = [ "nix-command" "flakes"];
 networking.hostName = "sweetNix";
@@ -117,6 +124,7 @@ environment.systemPackages = with pkgs; [
 	sbctl
 	scrcpy 
     wl-clipboard 
+	swayidle
 	pkgsUnstable.steam
     pavucontrol 
     brightnessctl 
