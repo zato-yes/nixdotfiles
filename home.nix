@@ -17,7 +17,7 @@ in
   imports = [
   	./hmModules/bash.nix
   	./hmModules/firefox.nix
-  	./hmModules/papirusicons.nix
+  	./hmModules/gtkTheme.nix
   	./hmModules/textfox.nix
   ];
 
