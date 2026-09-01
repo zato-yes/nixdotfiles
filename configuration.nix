@@ -119,7 +119,6 @@ environment.systemPackages = with pkgs; [
     htop 
     grim 
     slurp 
-    rofi 
 	python3
 	sbctl
 	scrcpy 
