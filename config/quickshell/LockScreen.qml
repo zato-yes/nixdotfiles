@@ -5,29 +5,24 @@ import Quickshell
 import Quickshell.Io
 import Quickshell.Wayland
 import Quickshell.Services.Pam
-
-// Entry point. Spawn fresh per-lock, e.g. from a keybind or idle daemon:
-//   qs -p ~/.config/quickshell/lockscreen
-// Exits (Qt.quit()) automatically on successful auth.
-
+import "./themes"
+import "./lockscreen"
 ShellRoot {
     id: root
 
-    property color colBase: "#1e1e2e"
-    property color colCrust: "#11111b"
-    property color colMantle: "#181825"
-    property color colText: "#cdd6f4"
-    property color colSubtext0: "#a6adc8"
+    property color colBase: Colors.backgroundBar
+    property color colText: Colors.foreground
+    property color colSubtext0: Colors.inactiveGrey
     property color colOverlay0: "#6c7086"
     property color colOverlay2: "#9399b2"
     property color colSurface0: "#313244"
     property color colSurface1: "#45475a"
     property color colSurface2: "#585b70"
-    property color colMauve: "#cba6f7"
-    property color colRed: "#f38ba8"
-    property color colPeach: "#fab387"
-    property color colBlue: "#89b4fa"
-    property color colGreen: "#a6e3a1"
+    property color colMauve: Colors.foreground
+    property color colRed: Colors.pinkRed
+    property color colPeach: Colors.pastelYellow
+    property color colBlue: Colors.pastelBlue
+    property color colGreen: Colors.lightGreen
 
     property int cooldownMs: 0
     property int maxAttempts: 10
@@ -196,7 +191,6 @@ ShellRoot {
                     colSurface0: root.colSurface0
                     colSurface1: root.colSurface1
                     colSurface2: root.colSurface2
-                    colCrust: root.colCrust
                     colMauve: root.colMauve
                     colBlue: root.colBlue
                     colPeach: root.colPeach

@@ -11,7 +11,7 @@ ShellRoot {
             screen: modelData
 
             WlrLayershell.layer: WlrLayer.Background
-            WlrLayershell.exclusiveZone: -1  // don't reserve space, just sit behind everything
+            WlrLayershell.exclusiveZone: -1
             WlrLayershell.namespace: "quickshell:wallpaper"
 
             anchors {

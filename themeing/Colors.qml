@@ -38,7 +38,13 @@ Singleton {
 		
 	readonly property color inactiveGrey: "#717787"
     readonly property color inactiveGreyLight: Qt.lighter(inactiveGrey, 1.5)
-    readonly property color inactiveGreyDark: Qt.darker(inactiveGrey, 1.5)
+	readonly property color inactiveGreyDark: Qt.darker(inactiveGrey, 1.5)
+
+	readonly property color peachOrange: "#fab387"
+	readonly property color lightGreen: "#a6e3a1"
+	readonly property color lightPurple: "#cba6f7"
+
+
 
 	
 }
