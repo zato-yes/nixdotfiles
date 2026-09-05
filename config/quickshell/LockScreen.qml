@@ -13,11 +13,11 @@ ShellRoot {
     property color colBase: Colors.backgroundBar
     property color colText: Colors.foreground
     property color colSubtext0: Colors.inactiveGrey
-    property color colOverlay0: "#6c7086"
-    property color colOverlay2: "#9399b2"
-    property color colSurface0: "#313244"
-    property color colSurface1: "#45475a"
-    property color colSurface2: "#585b70"
+    property color colOverlay0: "purple"
+    property color colOverlay2: Colors.foreground
+    property color colSurface0: Colors.background //inbox
+    property color colSurface1: Colors.pastelGrey
+    property color colSurface2: Colors.backgroundBar
     property color colMauve: Colors.foreground
     property color colRed: Colors.pinkRed
     property color colPeach: Colors.pastelYellow
@@ -178,7 +178,7 @@ ShellRoot {
                 PowerMenu {
                     id: powerMenu
                     anchors.bottom: parent.bottom
-                    anchors.right: parent.right
+                    anchors.left: parent.left
                     anchors.margins: 40
                     open: screenRoot.powerMenuOpen
                     introState: screenRoot.introState

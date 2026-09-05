@@ -14,11 +14,11 @@ Rectangle {
     signal clicked()
 
     Layout.fillWidth: true
-    Layout.preferredHeight: 45
+    Layout.preferredHeight: 35
     Layout.leftMargin: 10
     Layout.rightMargin: 10
     Layout.bottomMargin: isLast ? 4 : 0
-    radius: 5
+    radius: 1
 
     color: ma.containsMouse ? Qt.rgba(accentColor.r, accentColor.g, accentColor.b, 0.1) : "transparent"
     scale: ma.pressed ? 0.95 : (ma.containsMouse ? 1.02 : 1.0)

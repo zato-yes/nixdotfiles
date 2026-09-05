@@ -33,17 +33,17 @@ Item {
     Rectangle {
         id: menu
         anchors.bottom: powerBtn.top 
-        anchors.right: parent.right 
+        anchors.left: parent.left
 		anchors.bottomMargin: 10
         width: 230
         height: root.open ? (menuLayout.implicitHeight + 10) : 0
-        radius: 5
+        radius: 1
         clip: true
         opacity: root.open ? 1 : 0
 		
         color: Qt.rgba(root.colSurface0.r, root.colSurface0.g, root.colSurface0.b, 0.95)
         border.color: Qt.rgba(root.colMauve.r, root.colMauve.g, root.colMauve.b, 0.25)
-        border.width: 1
+        border.width: 2
 
         Behavior on height { NumberAnimation { duration: 350; easing.type: Easing.OutExpo } }
         Behavior on opacity { NumberAnimation { duration: 250 } }
@@ -88,7 +88,7 @@ Item {
         color: root.open ? root.colSurface2
              : (powerBtnMa.containsMouse ? Qt.rgba(root.colSurface1.r, root.colSurface1.g, root.colSurface1.b, 0.8) : Qt.rgba(root.colSurface0.r, root.colSurface0.g, root.colSurface0.b, 0.4))
         border.color: root.open ? root.colText : Qt.rgba(root.colText.r, root.colText.g, root.colText.b, 0.15)
-        border.width: 1.2
+        border.width: 0
 
         opacity: root.introState
         transform: Translate { y: 20 * (1.0 - root.introState) }

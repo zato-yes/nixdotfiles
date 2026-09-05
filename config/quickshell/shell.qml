@@ -5,9 +5,15 @@ import QtQuick.Layouts
 import "./mangobar"
 import "./themes"
 import "./wallpaper"
+import "./powerscreen"
 //import "../themes/Colors.qml"
 //
 ShellRoot {
-	Bar { }
-	Wallpaper { }
+	Bar {}
+	Wallpaper {}
+	PowerScreen {
+	id: powerMenu
+	visible: false
+	}	 
+	
 }
