@@ -1,6 +1,13 @@
 { config, lib, pkgs, pkgsUnstable, ... }:
 {
-imports = [ ./hardware-configuration.nix ];
+imports = [ 
+	./hardware-configuration.nix
+	./nixModules/blackListedKernelModules.nix
+	./nixModules/kernelDriverConfiguration.nix
+];
+#///
+security.lockKernelModules = true;
+#///
 
 boot.loader = {
   grub = {
