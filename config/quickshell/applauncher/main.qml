@@ -100,10 +100,10 @@ ShellRoot {
 
         Rectangle {
             anchors.fill: parent
-            radius: 10
+            radius: 0
             color: "red"
             border.color: "#3a3a3a"
-            border.width: 1
+            border.width: 0
 
             Column {
                 anchors.fill: parent

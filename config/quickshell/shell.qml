@@ -11,9 +11,5 @@ import "./powerscreen"
 ShellRoot {
 	Bar {}
 	Wallpaper {}
-	PowerScreen {
-	id: powerMenu
-	visible: false
-	}	 
 	
 }
