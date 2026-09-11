@@ -82,7 +82,6 @@ ShellRoot {
 
 
 	PanelWindow {
-		model: Quickshell.screens.filter(s => s.name === "eDP-1")
         id: window
 		//backgroundwindow
         implicitWidth: 600
