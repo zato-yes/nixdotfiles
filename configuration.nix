@@ -4,6 +4,7 @@ imports = [
 	./hardware-configuration.nix
 	./nixModules/blackListedKernelModules.nix
 	./nixModules/kernelDriverConfiguration.nix
+	./nixModules/sysctlConfiguration.nix
 ];
 #///
 security.lockKernelModules = true;
