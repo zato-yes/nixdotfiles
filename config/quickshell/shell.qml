@@ -9,7 +9,13 @@ import "./powerscreen"
 //import "../themes/Colors.qml"
 //
 ShellRoot {
-	Bar {}
+	Variants {
+		model: Quickshell.screens
+		Bar {
+			modelData: modelData
+		}
+	}
+
 	Wallpaper {}
 	
 }

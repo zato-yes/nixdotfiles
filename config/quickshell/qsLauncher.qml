@@ -4,12 +4,6 @@ import Quickshell.Wayland
 import Quickshell.Io
 import "./themes"
 import "./applauncher"
-//   - loading the app cache (with first-run auto-generation)
-//   - filtering the list as the user types
-//   - tracking which row is selected
-//   - handling every keypress (Esc / Up / Down / Enter)
-//   - actually launching the chosen app and quitting
-//
 ShellRoot {
     id: shellRoot
 
@@ -87,12 +81,12 @@ ShellRoot {
     }
 
 
-    PanelWindow {
+	PanelWindow {
+		model: Quickshell.screens.filter(s => s.name === "eDP-1")
         id: window
 		//backgroundwindow
         implicitWidth: 600
-        implicitHeight: 500
-
+		implicitHeight: 500
 		color: "transparent"
         WlrLayershell.layer: WlrLayer.Overlay
         WlrLayershell.keyboardFocus: WlrKeyboardFocus.Exclusive

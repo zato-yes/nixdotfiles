@@ -5,7 +5,8 @@ import QtQuick.Layouts
 import "../themes"
 PanelWindow {
     id: bar
-
+	required property var modelData
+	screen: modelData
     // screen: Quickshell.screens.find(s => s.name === "eDP-1")
 
     anchors {
