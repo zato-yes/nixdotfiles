@@ -7,7 +7,6 @@ boot.blacklistedKernelModules = [
 "dccp"
 "rds"
 "tipc"
-"hid_multitouch"
 "joydev"
 ];
 
