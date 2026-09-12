@@ -2,7 +2,7 @@
 
 {
 boot.kernel.sysctl = { 
-	"vm.swappiness" = 0;
+	"vm.swappiness" = 25;
 
 	"kernel.kptr_restrict" = 2;
 	"kernel.unprivileged_bpf_disabled" = 1;

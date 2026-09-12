@@ -149,20 +149,31 @@ environment.systemPackages = with pkgs; [
     bibata-cursors
 	vimPlugins.cmp-nvim-lsp
     vimPlugins.nvim-cmp
+	fuzzel
     nixd
 	quickshell
     lua-language-server
 ];
 
 services.flatpak.enable = true;
-xdg.portal.enable = true;
-xdg.portal.extraPortals = [ pkgs.xdg-desktop-portal-gtk ];
 #
 
+xdg.portal = {
+	enable = true;
 
+    wlr = {
+      enable = true;
+      settings.screencast = {
+        chooser_type = "dmenu";
+		chooser_cmd = "${pkgs.fuzzel}/bin/fuzzel --dmenu --prompt='Share: '";
+      };
+    };
 
-
-
+    extraPortals = with pkgs; [
+      xdg-desktop-portal-wlr
+      xdg-desktop-portal-gtk
+    ];
+};
 #Services
 
 nix.gc = {
