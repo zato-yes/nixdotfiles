@@ -136,6 +136,7 @@ environment.systemPackages = with pkgs; [
     pavucontrol 
     brightnessctl 
     wev
+	fuzzel
     foot
 	gsettings-desktop-schemas
     macchanger 
@@ -149,7 +150,6 @@ environment.systemPackages = with pkgs; [
     bibata-cursors
 	vimPlugins.cmp-nvim-lsp
     vimPlugins.nvim-cmp
-	fuzzel
     nixd
 	quickshell
     lua-language-server

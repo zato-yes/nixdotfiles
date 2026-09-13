@@ -43,6 +43,9 @@ Singleton {
 	readonly property color peachOrange: "#fab387"
 	readonly property color lightGreen: "#a6e3a1"
 	readonly property color lightPurple: "#cba6f7"
+	readonly property color creamWhite: "#b1b1b5"
+	readonly property color darkCreamWhite: "#a4a4a8"
+
 
 
 

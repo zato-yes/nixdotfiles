@@ -8,6 +8,7 @@ let
 		nvim = "nvim";
 		quickshell = "quickshell";
 		foot = "foot";
+		fuzzel = "fuzzel";
 	};
 in
 
