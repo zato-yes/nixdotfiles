@@ -20,6 +20,7 @@ in
   	./hmModules/firefox.nix
   	./hmModules/gtkTheme.nix
   	./hmModules/textfox.nix
+	./hmModules/git.nix
   ];
 
 	home.username = "dummy";

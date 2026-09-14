@@ -140,7 +140,6 @@ environment.systemPackages = with pkgs; [
     foot
 	gsettings-desktop-schemas
     macchanger 
-    git 
 	thunar
 	ly
     lm_sensors 
