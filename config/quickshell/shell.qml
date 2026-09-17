@@ -17,5 +17,6 @@ ShellRoot {
 	}
 
 	Wallpaper {}
+	OnScreenVolumeIndicator {}
 	
 }

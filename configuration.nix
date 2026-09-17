@@ -106,6 +106,9 @@ security.polkit.enable = true;
 services.displayManager.ly = {
     enable = true;
 	settings = {
+		clear_password = true;
+		battery_id = "BAT0";
+		clock = true;
 		setup_cmd = "";
 	};
 };
@@ -141,7 +144,6 @@ environment.systemPackages = with pkgs; [
 	gsettings-desktop-schemas
     macchanger 
 	thunar
-	ly
     lm_sensors 
 	input-remapper
 	dconf

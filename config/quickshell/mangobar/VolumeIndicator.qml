@@ -6,15 +6,16 @@ import Quickshell.Services.Pipewire
 Item {
     id: root
     property color textColor: "red"
-    property int fontSize: 16
+    property int fontSize: 20
     property string fontFamily: "JetBrainsMono Nerd Font"
-    property int spacing: 3
-    property string glyphMuted: "󰝟"
+    property int spacing: 10
+    property string glyphMuted: usedForBar ? "󰝟" : "muted 󰝟"
     property string glyphLow: "󰕿"
     property string glyphMid: "󰖀"
     property string glyphHigh: "󰕾"
     property int lowMidThreshold: 20
     property int midHighThreshold: 30
+    property bool usedForBar: false
 
     readonly property var sink: Pipewire.defaultAudioSink
     readonly property int volume: sink?.audio ? Math.round(sink.audio.volume * 100) : 0
@@ -36,14 +37,16 @@ Item {
     Row {
         id: row
         spacing: root.spacing
-        Text {
+		Text {
+			id: textGlyph
             text: root.glyph
             font.family: root.fontFamily
             font.pixelSize: root.fontSize
             color: root.textColor
         }
-        Text {
-			text: "%" + root.volume 
+		Text {
+			id: textVolume
+			text: root.volume  + "%"
             font.family: root.fontFamily
             font.pixelSize: root.fontSize
             color: root.textColor

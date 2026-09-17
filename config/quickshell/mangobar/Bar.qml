@@ -85,6 +85,7 @@ PanelWindow {
 				}		
 				Divider {}
 				VolumeIndicator {
+					usedForBar: true
 					spacing: 5
 					fontSize: 13
 					textColor: Colors.pastelBlue
