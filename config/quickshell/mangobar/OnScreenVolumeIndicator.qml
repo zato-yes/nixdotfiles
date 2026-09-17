@@ -18,7 +18,7 @@ PanelWindow {
     WlrLayershell.layer: WlrLayer.Overlay
     WlrLayershell.exclusiveZone: -1
     WlrLayershell.keyboardFocus: WlrKeyboardFocus.None
-    WlrLayershell.namespace: "VolumeIndicator"
+    WlrLayershell.namespace: "volumeIndicator"
 
     readonly property var sink: Pipewire.defaultAudioSink
 
@@ -45,7 +45,7 @@ PanelWindow {
     }
     Rectangle {
         implicitHeight: 65
-        radius: 5
+        radius: 1
         color: Colors.backgroundBar
         opacity: 1
 		border.width: 0

@@ -14,10 +14,10 @@ PanelWindow {
         left: true
         right: true
 	}
-	implicitHeight: 33 + margins * 3
-	property int margins: 6
+	implicitHeight: 30 + margins * 5
+	property int margins: 1
     exclusiveZone: implicitHeight
-	color: "Transparent"
+	color: Colors.backgroundBar
 
 	component Divider: Rectangle {
     width: 1
@@ -25,30 +25,33 @@ PanelWindow {
 	opacity: 0.7
     color: Colors.mediumBlue
 	}
-
+	component Underline: Rectangle {
+        id: underline
+        anchors.horizontalCenter: parent.horizontalCenter
+        anchors.top: parent.bottom
+        anchors.topMargin: -4
+        width: parent.width * 1
+        height: 2.5
+        radius: 1
+        color: Colors.background
+	} 
 
 
 	Rectangle {
-    radius: 5
+    radius: 0
 	color: Colors.backgroundBar
         anchors {
             fill: parent
         	margins: bar.margins
         }
 	}
-
-
-
-
-
-
     WlrLayershell.layer: WlrLayershell.Top
     WlrLayershell.namespace: "quickshell-bar"
 
     RowLayout {
         anchors.fill: parent
-        anchors.leftMargin: 15
-        anchors.rightMargin: 15
+        anchors.leftMargin: 5
+        anchors.rightMargin: 5
         spacing: 9
 
         Tags {
@@ -56,11 +59,14 @@ PanelWindow {
         }
 		Item { Layout.fillWidth: true }
 		Rectangle {
-			color: Colors.background
-			radius: 7
+			color: Colors.backgroundBar
+			border.width: 1.2
+			border.color: Colors.background
+			radius: 3
     		implicitWidth: clock.implicitWidth + 15
-	   		implicitHeight: clock.implicitHeight + 10 
-			anchors.centerIn: parent	
+	   		implicitHeight: clock.implicitHeight + 8
+			anchors.centerIn: parent
+			
 			Clock {
 				id: clock 
 				anchors.centerIn: parent
@@ -71,8 +77,10 @@ PanelWindow {
 		}
 		
 		Rectangle {
-			color: Colors.background
-			radius: 7
+			color: Colors.backgroundBar
+			border.width: 1
+			border.color: Colors.background
+			radius: 3
 			implicitWidth: row.implicitWidth + 15
 			implicitHeight: row.implicitHeight + 10
 			RowLayout {
