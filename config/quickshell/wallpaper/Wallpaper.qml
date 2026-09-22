@@ -25,7 +25,7 @@ ShellRoot {
 
             Image {
                 anchors.fill: parent
-                source: "file:///home/dummy/nixdotfiles/themeing/boc1.png"
+                source: "file:///home/dummy/nixwal.png"
                 fillMode: Image.PreserveAspectCrop
                 asynchronous: true
                 cache: true

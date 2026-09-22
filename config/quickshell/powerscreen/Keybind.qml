@@ -16,7 +16,7 @@ FocusScope {
 			root.Window.window.visible = false;
             return;
         }
-        if (event.key !== Qt.Key_1 && event.key !== Qt.Key_2) {
+        if (event.key !== Qt.Key_1 && event.key !== Qt.Key_2 && event.key !== Qt.Key_3) {
             return;
         }
         const now = Date.now();
@@ -27,7 +27,9 @@ FocusScope {
                 Quickshell.execDetached(["systemctl", "reboot"]);
             } else if (event.key === Qt.Key_2) {
                 Quickshell.execDetached(["systemctl", "poweroff"]);
-            }
+			} else if (event.key === Qt.Key_3) {
+				Quickshell.execDetached(["mmsg", "dispatch", "quit"]);
+			}
             root.lastKey = -1;
             root.lastPressTime = 0;
         } else {

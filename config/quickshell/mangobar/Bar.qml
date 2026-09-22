@@ -60,7 +60,7 @@ PanelWindow {
 		Item { Layout.fillWidth: true }
 		Rectangle {
 			color: Colors.backgroundBar
-			border.width: 1.2
+			border.width: 2
 			border.color: Colors.background
 			radius: 3
     		implicitWidth: clock.implicitWidth + 15
@@ -78,7 +78,7 @@ PanelWindow {
 		
 		Rectangle {
 			color: Colors.backgroundBar
-			border.width: 1
+			border.width: 2
 			border.color: Colors.background
 			radius: 3
 			implicitWidth: row.implicitWidth + 15

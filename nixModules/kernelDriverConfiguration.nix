@@ -25,7 +25,7 @@ boot.kernelModules = [
 	"usbnet"
 	"mii"
 	"r8152"
-
+	"uinput"
 
 
 ];

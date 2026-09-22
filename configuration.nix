@@ -78,7 +78,7 @@ networking.firewall = {
   allowedUDPPorts = [ ];
 };
 
-
+programs.ydotool.enable = true;
 nix.settings.experimental-features = [ "nix-command" "flakes"];
 networking.hostName = "sweetNix";
 networking.networkmanager.enable = true;
@@ -96,7 +96,7 @@ services.pipewire = {
 
 users.users.dummy = {
     isNormalUser = true;
-    extraGroups = [ "wheel" ];
+    extraGroups = [ "wheel" "ydotool" ];
     packages = with pkgs; [ tree ];
 };
 
@@ -108,7 +108,8 @@ services.displayManager.ly = {
 	settings = {
 		clear_password = true;
 		battery_id = "BAT0";
-		clock = true;
+		bg = "0x001b1e25";
+		fg = "0x00c6c6c8";
 		setup_cmd = "";
 	};
 };

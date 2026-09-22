@@ -15,7 +15,7 @@ ShellRoot {
 			modelData: modelData
 		}
 	}
-
+	PowerScreen {}
 	Wallpaper {}
 	OnScreenVolumeIndicator {}
 	
