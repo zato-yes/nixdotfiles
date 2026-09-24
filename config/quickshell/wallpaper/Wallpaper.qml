@@ -1,15 +1,17 @@
+import Quickshell.Io
 import Quickshell
 import Quickshell.Wayland
 import QtQuick
-
+import Quickshell
 ShellRoot {
     Variants {
-        model: Quickshell.screens
-
-        PanelWindow {
+		model: Quickshell.screens
+		PanelWindow {
+			id: panelWindow
             required property var modelData
             screen: modelData
-
+			property string wallpaperPath: "/nixdotfiles/wallpapers/nixwal.png"
+			property string home: Quickshell.env("HOME")
             WlrLayershell.layer: WlrLayer.Background
             WlrLayershell.exclusiveZone: -1
             WlrLayershell.namespace: "quickshell:wallpaper"
@@ -25,11 +27,17 @@ ShellRoot {
 
             Image {
                 anchors.fill: parent
-                source: "file:///home/dummy/nixwal.png"
-                fillMode: Image.PreserveAspectCrop
+                source: WalConfig.wallpaperPath
+                fillMode: Image.PreserveAspectFit
                 asynchronous: true
                 cache: true
             }
         }
-    }
+	}
+
+	IpcHandler {
+    	target: "wallpaper"
+    	function set(path: string): void { WalConfig.wallpaperPath = path }
+	}
+
 }

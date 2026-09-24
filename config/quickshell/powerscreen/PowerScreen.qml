@@ -26,15 +26,15 @@ PanelWindow {
 		radius: 0
 		color: Colors.backgroundBar
 		border.color: Colors.darkCreamWhite 
-		border.width: 0.5
+		border.width: 0
 		opacity: 1
 			anchors {
         		left: parent.left
         		right: parent.right
-        		leftMargin: 550
-				rightMargin: 550
+        		leftMargin: 650
+				rightMargin: 650
 				verticalCenter: parent.verticalCenter 
-				verticalCenterOffset: -35
+				verticalCenterOffset: -50
 			}
 			Text {
 				text: "1 Reboot, 2 Poweroff, 3 Logout, ESC Quit"
@@ -42,63 +42,76 @@ PanelWindow {
 				anchors.top: parent.top
         		anchors.horizontalCenter: parent.horizontalCenter
 				anchors.topMargin: 10
-				font.pixelSize: 30
+				font.pixelSize: 20
 				font.family: "JetBrainsMono Nerd Font"
 			}
 			Keybind {
-    		anchors.fill: parent
-			focus: true
+				id: keys
+    			anchors.fill: parent
+				focus: true
 			}
 			RowLayout {
-			//	anchors.fill: parent
 				anchors.centerIn: parent
 				spacing: 100
 				Rectangle {
 					Layout.fillWidth: false
+					radius: 5
 					opacity: 1
 					Layout.preferredWidth: 100
 					Layout.preferredHeight: 100
 					Layout.leftMargin: 0
-					color: Colors.background
+					color: keys.lastKey == Qt.Key_1 ? Colors.backgroundBar : "transparent"
+					border.color: keys.lastKey == Qt.Key_1 ?  Colors.background : "transparent"
+					border.width: 1
 					Text {
 						anchors.centerIn: parent
 						fontSizeMode: Text.Fit
                         text: "󰜉"
-                        font.pixelSize: 120
+						font.pixelSize: 105
+						color: keys.lastKey == Qt.Key_1 ? Colors.cursor : Colors.inactiveGrey
                         font.family: "JetBrainsMono Nerd Font"
                     }
 					
 				}
 				Rectangle {
 					Layout.fillWidth: false
+					radius: 5
 					opacity: 1
 					Layout.preferredWidth: 100
 					Layout.preferredHeight: 100
 					Layout.rightMargin: 0
-					color: Colors.background
+					color: keys.lastKey == Qt.Key_2 ? Colors.backgroundBar : "transparent"
+					border.color: keys.lastKey == Qt.Key_2 ?  Colors.background : "transparent"
+					border.width: 1
 					Text {
 						anchors.centerIn: parent
 						fontSizeMode: Text.Fit
                         text: "󰐥"
-                        font.pixelSize: 120
-                        font.family: "JetBrainsMono Nerd Font"
+                        font.pixelSize: 105
+						font.family: "JetBrainsMono Nerd Font"
+						color: keys.lastKey == Qt.Key_2 ? Colors.cursor : Colors.inactiveGrey
                     }
 				}
 				Rectangle {
 					Layout.fillWidth: false
+					radius: 5
 					opacity: 1
 					Layout.preferredWidth: 100
 					Layout.preferredHeight: 100
 					Layout.rightMargin: 0
-					color: Colors.background
+					color: keys.lastKey == Qt.Key_3 ? Colors.backgroundBar : "transparent"
+					border.color: keys.lastKey == Qt.Key_3 ?  Colors.background : "transparent"
+					border.width: 1
 					Text {
 						anchors.centerIn: parent
 						fontSizeMode: Text.Fit
                         text: "󰍃"
-                        font.pixelSize: 100
-                        font.family: "JetBrainsMono Nerd Font"
+                        font.pixelSize: 95
+						font.family: "JetBrainsMono Nerd Font"
+						color: keys.lastKey == Qt.Key_3 ? Colors.cursor : Colors.inactiveGrey
                     }
 				}
+
 			}
 				
 
@@ -106,7 +119,7 @@ PanelWindow {
 		Rectangle {
 		anchors.fill: parent	
 		color: "black"
-		opacity: 0
+		opacity: 0.1
 
 	
 		}

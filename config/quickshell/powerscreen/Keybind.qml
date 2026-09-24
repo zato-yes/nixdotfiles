@@ -12,7 +12,8 @@ FocusScope {
 	focus: true
 
 	Keys.onPressed: (event) => {
-        if (event.key === Qt.Key_Escape) {
+		if (event.key === Qt.Key_Escape) {
+			root.lastKey = -1;
 			root.Window.window.visible = false;
             return;
         }
