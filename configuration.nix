@@ -131,11 +131,11 @@ environment.systemPackages = with pkgs; [
     htop 
     grim 
     slurp 
-	python3
 	sbctl
 	scrcpy 
     wl-clipboard 
 	swayidle
+	satty
 	pkgsUnstable.steam
     pavucontrol 
     brightnessctl 
@@ -143,7 +143,6 @@ environment.systemPackages = with pkgs; [
 	fuzzel
     foot
 	gsettings-desktop-schemas
-    macchanger 
 	thunar
     lm_sensors 
 	input-remapper
@@ -156,10 +155,9 @@ environment.systemPackages = with pkgs; [
 	quickshell
     lua-language-server
 ];
-
+services.tumbler.enable = true;
 services.flatpak.enable = true;
 #
-
 xdg.portal = {
 	enable = true;
 
