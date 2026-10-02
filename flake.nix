@@ -17,13 +17,13 @@
 		};
 		
 		lanzaboote = {
-		url = "github:nix-community/lanzaboote/v1.1.0";
-		inputs.nixpkgs.follows = "nixpkgsUnstable";
-
+			url = "github:nix-community/lanzaboote/v1.1.0";
+			inputs.nixpkgs.follows = "nixpkgsUnstable";
 		};
-
-
-
+		noctalia = {
+			url = "github:noctalia-dev/noctalia";
+			inputs.nixpkgs.follows = "nixpkgs";
+		};
 	};
     outputs = { self, nixpkgs, home-manager, nixpkgsUnstable, mangowm, lanzaboote, ...}@inputs:
     let

@@ -10,8 +10,6 @@ ShellRoot {
 			id: panelWindow
             required property var modelData
             screen: modelData
-			property string wallpaperPath: "/nixdotfiles/wallpapers/nixwal.png"
-			property string home: Quickshell.env("HOME")
             WlrLayershell.layer: WlrLayer.Background
             WlrLayershell.exclusiveZone: -1
             WlrLayershell.namespace: "quickshell:wallpaper"

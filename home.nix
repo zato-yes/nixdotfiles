@@ -22,6 +22,7 @@ in
   	./hmModules/gtkTheme.nix
   	./hmModules/textfox.nix
 	./hmModules/git.nix
+	./hmModules/noctalia.nix
   ];
 
 	home.username = "dummy";
