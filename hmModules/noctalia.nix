@@ -8,6 +8,6 @@ imports = [
 
 programs.noctalia = {
 	enable = true;
-	settings = "~/nixdotfiles/config/noctalia/settings.toml";
+	settings = ../config/noctalia/settings.toml; 
 };
 }
