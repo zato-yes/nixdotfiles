@@ -7,7 +7,7 @@ imports = [
 	./nixModules/sysctlConfiguration.nix
 ];
 #///
-security.lockKernelModules = true;
+security.lockKernelModules = false;
 #///
 
 boot.loader = {
@@ -64,6 +64,10 @@ boot.loader.grub.extraEntries = ''
   }
 '';
 
+virtualisation.waydroid = {
+	package = pkgs.waydroid-nftables;
+	enable = true;
+};
 
 boot.kernelPackages = pkgs.linuxPackages_latest;
 
@@ -121,7 +125,6 @@ programs.dconf.enable = true;
 
 fonts.packages = with pkgs; [
   nerd-fonts.jetbrains-mono
-(iosevka-bin.override { variant = "SGr-IosevkaFixed"; })
 ];
 # Apps
 environment.systemPackages = with pkgs; [
