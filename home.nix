@@ -6,7 +6,6 @@ let
 	configs = {
 		mango = "mango";
 		nvim = "nvim";
-		quickshell = "quickshell";
 		foot = "foot";
 		fuzzel = "fuzzel";
 		Thunar = "Thunar";
