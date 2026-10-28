@@ -5,7 +5,7 @@
 	<name>SET wallpaper</name>
 	<submenu></submenu>
 	<unique-id>1790287553558284-1</unique-id>
-	<command>qs ipc call wallpaper set %f</command>
+	<command>noctalia msg wallpaper-set %f</command>
 	<description>yes wallpaper</description>
 	<range>*</range>
 	<patterns>*</patterns>

@@ -7,7 +7,7 @@ imports = [
 	./nixModules/sysctlConfiguration.nix
 ];
 #///
-security.lockKernelModules = false;
+security.lockKernelModules = true;
 #///
 
 boot.loader = {
@@ -64,10 +64,6 @@ boot.loader.grub.extraEntries = ''
   }
 '';
 
-virtualisation.waydroid = {
-	package = pkgs.waydroid-nftables;
-	enable = true;
-};
 
 boot.kernelPackages = pkgs.linuxPackages_latest;
 
@@ -137,7 +133,6 @@ environment.systemPackages = with pkgs; [
 	sbctl
 	scrcpy 
     wl-clipboard 
-	swayidle
 	satty
 	pkgsUnstable.steam
     pavucontrol 
@@ -155,7 +150,6 @@ environment.systemPackages = with pkgs; [
 	vimPlugins.cmp-nvim-lsp
     vimPlugins.nvim-cmp
     nixd
-	quickshell
     lua-language-server
 ];
 services.tumbler.enable = true;
