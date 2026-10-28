@@ -58,21 +58,19 @@ longitude = 6.9531010000000002
 
 [lockscreen]
 blur_intensity = 0.59999998658895493
-edge_smoothness = 0.68999998457729816
+edge_smoothness = 0.99999997764825821
 fingerprint = false
 tint_intensity = 0.19999999552965164
-transition = [ "zoom" ]
-transition_duration = 800
+transition = [ "fade" ]
+transition_duration = 500
 
 [lockscreen_widgets]
 enabled = true
 schema_version = 2
 widget_order = [
     "lockscreen-login-box@eDP-1",
-    "lockscreen-widget-0000000000000001",
     "lockscreen-widget-0000000000000002",
     "lockscreen-widget-0000000000000003",
-    "lockscreen-widget-0000000000000004",
     "lockscreen-widget-0000000000000005",
     "lockscreen-widget-0000000000000006"
 ]
@@ -84,9 +82,9 @@ widget_order = [
 
     [lockscreen_widgets.widget."lockscreen-login-box@eDP-1"]
     box_height = 70.0
-    box_width = 432.0
+    box_width = 448.0
     cx = 960.0
-    cy = 540.0
+    cy = 620.0
     output = "eDP-1"
     placement_height = 1080.0
     placement_width = 1920.0
@@ -105,6 +103,7 @@ widget_order = [
         show_keyboard_layout = true
         show_login_button = true
         show_media = false
+        show_password_reveal = true
         show_session_buttons = true
         show_unlock_hint = false
         show_weather = false
@@ -132,9 +131,9 @@ widget_order = [
 
     [lockscreen_widgets.widget.lockscreen-widget-0000000000000002]
     box_height = 152.0
-    box_width = 448.0
-    cx = 256.0
-    cy = 128.0
+    box_width = 752.0
+    cx = 960.0
+    cy = 200.0
     output = "eDP-1"
     placement_height = 1080.0
     placement_width = 1920.0
@@ -147,10 +146,10 @@ widget_order = [
         show_when_idle = true
 
     [lockscreen_widgets.widget.lockscreen-widget-0000000000000003]
-    box_height = 192.0
+    box_height = 240.0
     box_width = 752.0
     cx = 960.0
-    cy = 260.0
+    cy = 412.0
     output = "eDP-1"
     placement_height = 1080.0
     placement_width = 1920.0
@@ -163,6 +162,7 @@ widget_order = [
         background_radius = 5
         center_text = true
         clock_style = "digital"
+        format = "{:%H:%M\\n%b - %d}"
         shadow = true
 
     [lockscreen_widgets.widget.lockscreen-widget-0000000000000004]
@@ -183,10 +183,10 @@ widget_order = [
         shadow = true
 
     [lockscreen_widgets.widget.lockscreen-widget-0000000000000005]
-    box_height = 320.0
+    box_height = 200.0
     box_width = 448.0
-    cx = 256.0
-    cy = 700.0
+    cx = 1696.0
+    cy = 984.0
     output = "eDP-1"
     placement_height = 1080.0
     placement_width = 1920.0
@@ -195,19 +195,20 @@ widget_order = [
 
         [lockscreen_widgets.widget.lockscreen-widget-0000000000000005.settings]
         background_radius = 2
+        display = "graph"
         stat = "cpu_usage"
         stat2 = "cpu_temp"
 
     [lockscreen_widgets.widget.lockscreen-widget-0000000000000006]
-    box_height = 160.0
-    box_width = 232.0
-    cx = 352.0
-    cy = 956.0
+    box_height = 216.0
+    box_width = 392.0
+    cx = 960.0
+    cy = 952.0
     output = "eDP-1"
     placement_height = 1080.0
     placement_width = 1920.0
-    rotation = -0.0
-    type = "weather"
+    rotation = 0.0
+    type = "media_player"
 
         [lockscreen_widgets.widget.lockscreen-widget-0000000000000006.settings]
         background_radius = 2
@@ -231,6 +232,9 @@ position = "bottom_center"
 position_vertical = "bottom_center"
 scale = 1.1500000096857548
 
+[plugins]
+enabled = []
+
 [shell]
 avatar_path = "/home/dummy/nixdotfiles/assets/lily.png"
 corner_radius_scale = 0.15000000223517418
@@ -238,9 +242,16 @@ font_family = "JetBrainsMono Nerd Font"
 password_style = "random"
 polkit_agent = true
 
+    [shell.animation]
+    speed = 0.90000001341104507
+
     [shell.launcher]
     categories = false
+    layout = "simple"
     show_app_actions = true
+    show_navigation_labels = false
+    show_session_button = false
+    show_settings_button = false
 
         [shell.launcher.providers.emoji]
         prefix = "e"
@@ -271,6 +282,12 @@ polkit_agent = true
     grid_columns = 5
     show_shortcuts = false
 
+[system.monitor]
+cpu_temp_activity_threshold = 75
+cpu_temp_critical_threshold = 90
+gpu_temp_activity_threshold = 75
+ram_pct_activity_threshold = 70
+
 [theme]
 builtin = "Catppuccin"
 community_palette = "Catppuccin Frappe Blue"
@@ -279,18 +296,24 @@ mode = "dark"
 shell_mode = "dark"
 source = "wallpaper"
 
+    [theme.templates]
+    enable_builtin_templates = false
+    enable_community_templates = false
+
 [wallpaper]
 directory = "/home/dummy/nixdotfiles/wallpapers"
 fill_mode = "fit"
+transition = [ "melt" ]
+transition_on_startup = true
 
     [wallpaper.default]
-    path = "/home/dummy/nixdotfiles/wallpapers/nixwal.png"
+    path = "/home/dummy/nixdotfiles/wallpapers/milk.jpg"
 
     [wallpaper.last]
-    path = "/home/dummy/nixdotfiles/wallpapers/nixwal.png"
+    path = "/home/dummy/nixdotfiles/wallpapers/milk.jpg"
 
     [wallpaper.monitors.eDP-1]
-    path = "/home/dummy/nixdotfiles/wallpapers/nixwal.png"
+    path = "/home/dummy/nixdotfiles/wallpapers/milk.jpg"
 
 [weather]
 refresh_minutes = 60
