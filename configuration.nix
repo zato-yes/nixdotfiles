@@ -1,15 +1,15 @@
 { config, lib, pkgs, pkgsUnstable, ... }:
 {
+nix.settings.experimental-features = [ "nix-command" "flakes"];
+boot.kernelPackages = pkgs.linuxPackages_latest;
 imports = [ 
 	./hardware-configuration.nix
 	./nixModules/blackListedKernelModules.nix
 	./nixModules/kernelDriverConfiguration.nix
+	./nixServices/services.nix
 	./nixModules/sysctlConfiguration.nix
 ];
-#///
 security.lockKernelModules = true;
-#///
-
 boot.loader = {
   grub = {
 	enable = true;
@@ -65,33 +65,21 @@ boot.loader.grub.extraEntries = ''
 '';
 
 
-boot.kernelPackages = pkgs.linuxPackages_latest;
-
-hardware.cpu.intel.updateMicrocode = true;
-hardware.enableRedistributableFirmware = true;
-hardware.graphics.enable = true;
-hardware.graphics.enable32Bit = true;
-
-networking.firewall = {
-  enable = true;
-  allowedTCPPorts = [ ]; 
-  allowedUDPPorts = [ ];
+hardware = {
+	cpu.intel.updateMicrocode = true;
+	enableRedistributableFirmware = true;
+	graphics.enable = true;
+	graphics.enable32Bit = true;
 };
 
 programs.ydotool.enable = true;
-nix.settings.experimental-features = [ "nix-command" "flakes"];
-networking.hostName = "sweetNix";
-networking.networkmanager.enable = true;
 time.timeZone = "Europe/Berlin";
 console.keyMap = "uk";
 i18n.defaultLocale = "en_US.UTF-8";
-networking.nftables.enable = true;
-
-services.pipewire = {
-    enable = true;
-    pulse.enable = true;
-    wireplumber.enable = true;
-    alsa.enable = true;
+networking = {
+	nftables.enable = true;
+	networkmanager.enable = true;
+	hostName = "sweetNix";
 };
 
 users.users.dummy = {
@@ -100,29 +88,10 @@ users.users.dummy = {
     packages = with pkgs; [ tree ];
 };
 
-
-security.polkit.enable = true;
-
-services.displayManager.ly = {
-    enable = true;
-	settings = {
-		clear_password = true;
-		battery_id = "BAT0";
-		bg = "0x001b1e25";
-		fg = "0x00c6c6c8";
-		setup_cmd = "";
-	};
-};
-
-services.upower.enable = true;
-programs.dconf.enable = true;
-#####
-
-
 fonts.packages = with pkgs; [
   nerd-fonts.jetbrains-mono
 ];
-# Apps
+
 environment.systemPackages = with pkgs; [
     vim
     neovim
@@ -152,92 +121,7 @@ environment.systemPackages = with pkgs; [
     nixd
     lua-language-server
 ];
-services.tumbler.enable = true;
-services.flatpak.enable = true;
-#
-xdg.portal = {
-	enable = true;
 
-    wlr = {
-      enable = true;
-      settings.screencast = {
-        chooser_type = "dmenu";
-		chooser_cmd = "${pkgs.fuzzel}/bin/fuzzel --dmenu --prompt='Share: '";
-      };
-    };
-
-    extraPortals = with pkgs; [
-      xdg-desktop-portal-wlr
-      xdg-desktop-portal-gtk
-    ];
-};
-#Services
-
-nix.gc = {
-    automatic = true;
-    dates = "weekly";
-};
-
-
-systemd = {
-    services.remove-nix-gen = {
-        description = "removes every nix generation except for 5 lastest";
-        serviceConfig = {
-            Type = "oneshot";
-            ExecStart = ''
-            ${pkgs.nix}/bin/nix-env -p /nix/var/nix/profiles/system --delete-generations +5
-            '';
-        };
-    };
-    timers.remove-nix-gen = {
-        wantedBy = [ "timers.target" ];
-        timerConfig = {
-            OnCalendar = "weekly";
-            Persistent = true;
-        };
-    };
-};
-
-
-
-
-systemd.services.macchanger = {
-description = "macrandomise";
-after = [ "sys-subsystem-net-devices-enp0s20f0u1.device" ];
-wants = [ "sys-subsystem-net-devices-enp0s20f0u1.device" ];
-before = [ "network.target" ];
-wantedBy = [ "multi-user.target" ];
-path = [ pkgs.iproute2 pkgs.macchanger ];
-serviceConfig = {
-Type = "oneshot";
-ExecStartPre = "${pkgs.coreutils}/bin/sleep 0";
-ExecStart = pkgs.writeShellScript "macchanger-script" ''
-ip link set enp0s20f0u1 down
-macchanger -r enp0s20f0u1
-ip link set enp0s20f0u1 up
-'';
-RemainAfterExit = false;
-};
-};
-
-environment.sessionVariables = {
-  WLR_DRM_NO_ATOMIC = "1";
-  XDG_DATA_DIRS = [
-    "${pkgs.gsettings-desktop-schemas}/share/gsettings-schemas/${pkgs.gsettings-desktop-schemas.name}"
-  ];
-};
-
-services.thermald.enable = true;
-
-systemd.services.battery-charge-limit = {
-description = "set battery charge 60%";
-wantedBy = [ "multi-user.target" ];
-serviceConfig = {
-Type = "oneshot";
-ExecStart = "${pkgs.bash}/bin/sh -c 'echo 60 > /sys/class/power_supply/BAT0/charge_control_end_threshold'";
-RemainAfterExit = false;
-};
-};
 
 
 system.stateVersion = "25.11";
